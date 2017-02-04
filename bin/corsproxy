@@ -14,6 +14,8 @@ var proxy = server.connection({ port: port, labels: ['proxy'], host: host})
 server.register(require('inert'), function () {})
 server.register(require('h2o2'), function () {})
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 // cors plugin
 server.register(plugin, {
   select: ['proxy']
