@@ -41,7 +41,7 @@ proxy.route({
       mapUri: function (request, callback) {
         const protocol = (request.params.protocol && request.params.protocol === 'https') ? 'https://' : 'http://';
         request.host = request.params.host;
-        request.path = request.path.substr(request.params.host.length + 1);
+        request.path = request.path.substr(request.params.protocol.length + request.params.host.length + 2);
         request.headers['host'] = request.host;
         var query = request.url.search ? request.url.search : '';
         console.log('proxy to ' + protocol + request.host + request.path);
